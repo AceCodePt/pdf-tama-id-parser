@@ -1,15 +1,12 @@
 {
     "name": "pdf-tama",
-    "main": "./bin/main.ts",
+    "main": "./src/main.ts",
     "type": "module",
     "scripts": {
         "clean": "rimraf dist",
         "build": "npm run clean && tsc",
-        "dev": "ts-node ./bin/main.ts ./proj-ex",
+        "dev": "ts-node ./src/main.ts",
         "start": "node ./dist/main.js"
-    },
-    "bin": {
-        "gen": "./dist/main.js"
     },
     "devDependencies": {
         "@types/node": "^18.11.5",
