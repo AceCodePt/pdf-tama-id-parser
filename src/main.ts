@@ -1,4 +1,4 @@
-require("http2");
+import "http2";
 import fs from "fs/promises";
 import PdfParse from "pdf-parse";
 
