@@ -60,8 +60,8 @@ async function getData(userId: string) {
       mode: "cors",
     }).then((res) => res.text());
   } catch (error) {
-    responseText = error.cause.toString();
-    console.log(error.cause);
+    responseText = error.toString();
+    console.log(error.toString());
   }
   console.log(responseText);
   return [...(/((05\d)|(0\d))-\d{7}/g.exec(responseText) || [])];
