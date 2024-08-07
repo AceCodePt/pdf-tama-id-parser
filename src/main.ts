@@ -60,6 +60,6 @@ async function getData(userId: string) {
     }).then((res) => res.text());
     console.log(response);
   } catch (error) {
-    console.log(error.data);
+    console.log(error, JSON.stringify(error));
   }
 }
