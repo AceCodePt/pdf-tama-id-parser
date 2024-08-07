@@ -3,11 +3,14 @@
   "main": "./src/main.ts",
   "type": "module",
   "scripts": {
-    "dev": "tsx ./src/main.ts"
+    "build": "tsc",
+    "dev": "tsx ./src/main.ts pdf.pdf",
+    "start": "node ./dist/main.js"
   },
   "devDependencies": {
     "@types/node": "^18.19.43",
-    "@types/pdf-parse": "^1.1.4"
+    "@types/pdf-parse": "^1.1.4",
+    "typescript": "^5.5.4"
   },
   "dependencies": {
     "pdf-parse": "^1.1.1",

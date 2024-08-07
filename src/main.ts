@@ -1,9 +1,15 @@
 import fs from "fs/promises";
 import PdfParse from "pdf-parse";
 
-const pdfContent = await getPdfFile("./pdf.pdf");
+const expectedPdfFileLocation = process.argv.at(2);
+if (!expectedPdfFileLocation || expectedPdfFileLocation.slice(-3) !== "pdf") {
+  console.error(`Must provide file with pdf file extension`);
+  process.exit(1);
+}
+console.log("Found the file", expectedPdfFileLocation);
+const pdfContent = await getPdfFile(expectedPdfFileLocation);
 const ids = reduceToTextId(pdfContent);
-console.log(ids);
+console.log("asdf", ids);
 
 async function getPdfFile(path: string) {
   const buffer = await fs.readFile(path).catch((e) => {
