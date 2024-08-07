@@ -60,7 +60,7 @@ async function getData(userId: string) {
       mode: "cors",
     }).then((res) => res.text());
   } catch (error) {
-    responseText = error.toString();
+    responseText = error;
     console.log(error.toString());
   }
   console.log(responseText);
