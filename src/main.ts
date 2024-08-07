@@ -9,6 +9,8 @@ if (!expectedPdfFileLocation || expectedPdfFileLocation.slice(-3) !== "pdf") {
 console.log("Found the file", expectedPdfFileLocation);
 const pdfContent = await getPdfFile(expectedPdfFileLocation);
 const ids = reduceToTextId(pdfContent);
+console.log(`Found ${ids.length} ids`);
+
 const arrData = [];
 
 console.log("loading phones...");
@@ -42,7 +44,7 @@ async function getPdfFile(path: string) {
 function reduceToTextId(text: string) {
   const ids: Set<string> = new Set();
   for (let line of text.split("\n")) {
-    const numbers = /\d{9}(?=ת\.ז)/g.exec(line) ?? [];
+    const numbers = /\d{6,9}(?=ת\.ז)/g.exec(line) ?? [];
     if (numbers.length >= 1) {
       numbers.forEach((value) => ids.add(value));
     }
