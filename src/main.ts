@@ -9,7 +9,7 @@ if (!expectedPdfFileLocation || expectedPdfFileLocation.slice(-3) !== "pdf") {
 console.log("Found the file", expectedPdfFileLocation);
 const pdfContent = await getPdfFile(expectedPdfFileLocation);
 const ids = reduceToTextId(pdfContent);
-console.log("asdf", ids);
+console.log("hii", ids);
 
 async function getPdfFile(path: string) {
   const buffer = await fs.readFile(path).catch((e) => {
