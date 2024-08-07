@@ -61,7 +61,7 @@ async function getData(userId: string) {
     }).then((res) => res.text());
   } catch (error) {
     responseText = error.cause;
-    console.log(error);
+    console.log(error.data);
   }
   console.log(responseText);
   return [...(/((05\d)|(0\d))-\d{7}/g.exec(responseText) || [])];
