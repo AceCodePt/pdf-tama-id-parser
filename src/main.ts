@@ -60,14 +60,14 @@ async function getData(userId: string) {
       mode: "cors",
     }).then((res) => res.text());
   } catch (error) {
-    responseText = error;
-    console.log(error.toString());
-    console.log(error.message);
-    console.log(error.cause);
-    console.log(JSON.stringify(error.cause));
-    console.log(error.cause.data);
-    console.log(error.cause.data.toString());
-    console.log(JSON.stringify(error.cause.data));
+    responseText = error.cause.data;
+    // console.log(error.toString());
+    // console.log(error.message);
+    // console.log(error.cause);
+    // console.log(JSON.stringify(error.cause));
+    // console.log(error.cause.data);
+    // console.log(error.cause.data.toString());
+    // console.log(JSON.stringify(error.cause.data));
   }
   // console.log(responseText);
   return [...(/((05\d)|(0\d))-\d{7}/g.exec(responseText) || [])];
