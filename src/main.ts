@@ -9,9 +9,18 @@ if (!expectedPdfFileLocation || expectedPdfFileLocation.slice(-3) !== "pdf") {
 console.log("Found the file", expectedPdfFileLocation);
 const pdfContent = await getPdfFile(expectedPdfFileLocation);
 const ids = reduceToTextId(pdfContent);
-console.log("hii", ids[0]);
-const phones = await getData("25373341");
-console.log(phones);
+const arrData = [];
+
+for (let i = 0; i < ids.length; i++) {
+  const id = ids[i];
+  const phones = await getData(id);
+  const row = Object.assign(new Array(5), [id, ...phones]);
+  arrData.push(row.join(","));
+}
+
+const csvContent = arrData.join("\n");
+await fs.writeFile("result.csv", csvContent);
+console.log("done");
 
 async function getPdfFile(path: string) {
   const buffer = await fs.readFile(path).catch((e) => {
