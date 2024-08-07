@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import fs from "fs/promises";
 import PdfParse from "pdf-parse";
 
@@ -59,8 +59,8 @@ async function getData(userId: string) {
       .then((res) => res.data);
   } catch (error) {
     responseText = error.cause;
-    console.error("error", error);
+    console.error("error", (error as any).rawPacket, (error as AxiosError).code);
   }
-  console.log(responseText);
+  // console.log(responseText);
   return [...(/((05\d)|(0\d))-\d{7}/g.exec(responseText) || [])];
 }
