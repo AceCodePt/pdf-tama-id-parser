@@ -1,21 +1,16 @@
 {
-	"name": "pdf-tama",
-	"main": "./src/main.ts",
-	"type": "module",
-	"scripts": {
-		"dev": "tsx ./src/main.ts"
-	},
-	"devDependencies": {
-		"@types/node": "^18.19.43",
-		"@types/pdf-parse": "^1.1.4",
-		"rimraf": "^6.0.1",
-		"ts-node": "^10.9.2",
-		"typescript": "^4.9.5"
-	},
-	"dependencies": {
-		"cross-env": "^7.0.3",
-		"pdf-parse": "^1.1.1",
-		"tsx": "^4.16.5",
-		"zod": "^3.23.8"
-	}
+  "name": "pdf-tama",
+  "main": "./src/main.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx ./src/main.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.43",
+    "@types/pdf-parse": "^1.1.4"
+  },
+  "dependencies": {
+    "pdf-parse": "^1.1.1",
+    "tsx": "^4.16.5"
+  }
 }
