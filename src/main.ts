@@ -10,7 +10,7 @@ console.log("Found the file", expectedPdfFileLocation);
 const pdfContent = await getPdfFile(expectedPdfFileLocation);
 const ids = reduceToTextId(pdfContent);
 console.log("hii", ids[0]);
-const phones = getData("25373341");
+const phones = await getData("25373341");
 console.log(phones);
 
 async function getPdfFile(path: string) {
