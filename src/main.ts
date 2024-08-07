@@ -55,10 +55,11 @@ async function getData(userId: string) {
           "Sec-Fetch-Site": "same-origin",
           Priority: "u=0",
         },
+        responseEncoding: "windows-1255",
       })
       .then((res) => res.data);
   } catch (error) {
-    responseText = ((error as any).rawPacket as Buffer).toString("utf8");
+    responseText = ((error as any).rawPacket as Buffer).toString("utf-8");
     // console.error("error", (error as any).rawPacket, (error as AxiosError).code);
   }
   console.log(responseText);
