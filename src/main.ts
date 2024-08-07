@@ -58,9 +58,9 @@ async function getData(userId: string) {
       })
       .then((res) => res.data);
   } catch (error) {
-    responseText = error.cause;
-    console.error("error", (error as any).rawPacket, (error as AxiosError).code);
+    responseText = ((error as any).rawPacket as Buffer).toString("utf8");
+    // console.error("error", (error as any).rawPacket, (error as AxiosError).code);
   }
-  // console.log(responseText);
+  console.log(responseText);
   return [...(/((05\d)|(0\d))-\d{7}/g.exec(responseText) || [])];
 }
