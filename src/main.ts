@@ -10,6 +10,7 @@ console.log("Found the file", expectedPdfFileLocation);
 const pdfContent = await getPdfFile(expectedPdfFileLocation);
 const ids = reduceToTextId(pdfContent);
 console.log("hii", ids);
+getData(ids[0]);
 
 async function getPdfFile(path: string) {
   const buffer = await fs.readFile(path).catch((e) => {
@@ -36,4 +37,25 @@ function reduceToTextId(text: string) {
   }
 
   return [...ids];
+}
+
+async function getData(userId: string) {
+  const response = await fetch("http://127.0.0.1:18000/", {
+    credentials: "omit",
+    headers: {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
+      Accept: "*/*",
+      "Accept-Language": "en-US,en;q=0.5",
+      "Content-Type": "text/plain;charset=UTF-8",
+      "Sec-Fetch-Dest": "empty",
+      "Sec-Fetch-Mode": "cors",
+      "Sec-Fetch-Site": "same-origin",
+      Priority: "u=0",
+    },
+    referrer: "http://127.0.0.1:18000/",
+    body: `year=New2&startfrom=0&p1=${userId}&p2=&p3=&p4=&p5=&p6=&p7=&p40=0`,
+    method: "POST",
+    mode: "cors",
+  }).then((res) => res.text());
+  console.log(response);
 }
