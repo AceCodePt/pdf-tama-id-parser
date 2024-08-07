@@ -1,3 +1,4 @@
+require("http2");
 import fs from "fs/promises";
 import PdfParse from "pdf-parse";
 
@@ -10,7 +11,7 @@ console.log("Found the file", expectedPdfFileLocation);
 const pdfContent = await getPdfFile(expectedPdfFileLocation);
 const ids = reduceToTextId(pdfContent);
 console.log("hii", ids[0]);
-getData((25373341).toString());
+getData("25373341");
 
 async function getPdfFile(path: string) {
   const buffer = await fs.readFile(path).catch((e) => {
@@ -42,7 +43,7 @@ function reduceToTextId(text: string) {
 async function getData(userId: string) {
   let responseText: string = "";
   try {
-    const response = await fetch("http://127.0.0.1:18000/", {
+    responseText = await fetch("http://127.0.0.1:18000/", {
       credentials: "omit",
       headers: {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
