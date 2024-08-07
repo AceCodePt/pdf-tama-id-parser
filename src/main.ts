@@ -67,7 +67,7 @@ async function getData(userId: string) {
         Priority: "u=0",
       },
       referrer: "http://127.0.0.1:18000/",
-      body: `year=New2&startfrom=0&p1=${userId}&p2=&p3=&p4=&p5=&p6=&p7=&p40=0`,
+      body: `year=New2&startfrom=0&p1=${(+userId).toString()}&p2=&p3=&p4=&p5=&p6=&p7=&p40=0`,
       method: "POST",
       mode: "cors",
     }).then((res) => res.text());
