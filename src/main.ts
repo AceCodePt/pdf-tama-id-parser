@@ -59,10 +59,9 @@ async function getData(userId: string) {
       method: "POST",
       mode: "cors",
     }).then((res) => res.text());
-    console.log(response);
   } catch (error) {
     responseText = error.cause;
   }
-
-  return [.../((05\d)|(0\d))-\d{7}/g.exec(responseText)];
+  console.log(responseText);
+  return [...(/((05\d)|(0\d))-\d{7}/g.exec(responseText) || [])];
 }
