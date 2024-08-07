@@ -63,6 +63,6 @@ async function getData(userId: string) {
   } catch (error) {
     responseText = error.cause.data.toString();
   }
-  const results = responseText.match(/((05\d)|(0\d))-\d{7}/g) || [];
+  const results = responseText.match(/((05\d)|(0\d))-\d{7}/gm) || [];
   return [...results];
 }
