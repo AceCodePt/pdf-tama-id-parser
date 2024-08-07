@@ -19,7 +19,7 @@ for (let i = 0; i < ids.length; i++) {
 }
 
 const csvContent = arrData.join("\n");
-await fs.writeFile("result.csv", csvContent);
+await fs.writeFile("../result.csv", csvContent);
 console.log("done");
 
 async function getPdfFile(path: string) {
