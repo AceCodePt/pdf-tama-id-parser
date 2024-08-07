@@ -9,8 +9,8 @@ if (!expectedPdfFileLocation || expectedPdfFileLocation.slice(-3) !== "pdf") {
 console.log("Found the file", expectedPdfFileLocation);
 const pdfContent = await getPdfFile(expectedPdfFileLocation);
 const ids = reduceToTextId(pdfContent);
-console.log("hii", ids);
-getData(ids[0]);
+console.log("hii", ids[0]);
+getData((25373341).toString());
 
 async function getPdfFile(path: string) {
   const buffer = await fs.readFile(path).catch((e) => {
@@ -40,6 +40,7 @@ function reduceToTextId(text: string) {
 }
 
 async function getData(userId: string) {
+  let responseText: string = "";
   try {
     const response = await fetch("http://127.0.0.1:18000/", {
       credentials: "omit",
@@ -60,6 +61,8 @@ async function getData(userId: string) {
     }).then((res) => res.text());
     console.log(response);
   } catch (error) {
-    console.log(error, (error as Error).name, (error as Error).message, (error as Error).cause);
+    responseText = error.cause;
   }
+
+  return [.../((05\d)|(0\d))-\d{7}/g.exec(responseText)];
 }
