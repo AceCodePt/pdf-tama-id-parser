@@ -11,11 +11,13 @@ const pdfContent = await getPdfFile(expectedPdfFileLocation);
 const ids = reduceToTextId(pdfContent);
 const arrData = [];
 
+console.log("loading phones...");
 for (let i = 0; i < ids.length; i++) {
   const id = ids[i];
   const phones = await getData(id);
   const row = Object.assign(new Array(5), [id, ...phones]);
   arrData.push(row.join(","));
+  console.log(`loaded ${i + 1} out of ${ids.length}`);
 }
 
 const csvContent = arrData.join("\n");
